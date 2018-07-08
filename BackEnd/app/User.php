@@ -27,7 +27,7 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -46,5 +46,9 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function setPasswordAttribute($value){
+      $this->attributes['password'] = bcrypt($value);
     }
 }
