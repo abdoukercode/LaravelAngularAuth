@@ -12,7 +12,11 @@ import { AppRoutingModule } from './/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApicallService } from './services/apicall.service';
-
+import { TokenService } from './services/token.service';
+import { AuthService } from './services/auth.service';
+import { BeforeLoginService } from './services/before-login.service';
+import { AfterLoginService } from './services/AfterLoginService';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,9 +31,11 @@ import { ApicallService } from './services/apicall.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SnotifyModule
   ],
-  providers: [ApicallService],
+  providers: [ApicallService, TokenService, AuthService, BeforeLoginService, AfterLoginService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults}, SnotifyService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

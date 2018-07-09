@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApicallService } from '../../services/apicall.service';
+import { TokenService } from '../../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +17,11 @@ public form = {
   password_confirmation: null
 };
 public error = [];
-constructor(private _service: ApicallService) { }
+constructor(
+  private _service: ApicallService,
+   private _token: TokenService,
+   private _router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -24,11 +30,16 @@ constructor(private _service: ApicallService) { }
   onSubmit() {
 
     this._service.signup(this.form).subscribe(
-          data => console.log(data),
+          data => this.handleResponse(data),
           error => this.handleError(error));
   }
   handleError(error) {
     this.error = error.error.errors;
+  }
+
+  handleResponse(data) {
+    this._token.handle(data.access_token);
+    this._router.navigateByUrl('/profile');
   }
 
 }

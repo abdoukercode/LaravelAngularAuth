@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApicallService } from '../../services/apicall.service';
+import { TokenService } from '../../services/token.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -14,7 +17,12 @@ public form = {
 };
 
 public error = null;
-  constructor(private _service: ApicallService) { }
+  constructor(
+    private _service: ApicallService,
+     private _token: TokenService,
+     private _router: Router,
+     private _auth: AuthService
+    ) { }
 
   ngOnInit() {
   }
@@ -23,8 +31,14 @@ public error = null;
   onSubmit() {
     return this._service.login(this.form)
       .subscribe(
-          data => console.log(data),
+          data => this.handleResponse(data),
           error => this.handleError(error));
+  }
+
+  handleResponse(data) {
+    this._token.handle(data.access_token);
+    this._auth.changeAuthStatus(true);
+    this._router.navigateByUrl('/profile');
   }
   handleError(error) {
     this.error = error.error.error;

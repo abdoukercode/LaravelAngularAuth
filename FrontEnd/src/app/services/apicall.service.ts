@@ -14,4 +14,9 @@ private baseUrl = 'http://localhost:8000/api';
   login(data) {
     return this._http.post(`${this.baseUrl}/login`, data);
   }
+
+  sendPasswordResetLink(data) {
+    return this._http.post(`${this.baseUrl}/sendPasswordLink`, data);
+  }
+
 }

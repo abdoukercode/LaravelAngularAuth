@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "afd3662b5fb90e570984a725a240e8f2",
+    "content-hash": "f77332a8eff3b95ec712323b5b308bbd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -118,6 +118,57 @@
                 "laravel"
             ],
             "time": "2018-01-04T06:59:27+00:00"
+        },
+        {
+            "name": "brotzka/laravel-dotenv-editor",
+            "version": "v2.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Brotzka/laravel-dotenv-editor.git",
+                "reference": "0ae9ecfaf1c2824a419b4d7a8c20046bb6aeca43"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Brotzka/laravel-dotenv-editor/zipball/0ae9ecfaf1c2824a419b4d7a8c20046bb6aeca43",
+                "reference": "0ae9ecfaf1c2824a419b4d7a8c20046bb6aeca43",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Brotzka\\DotenvEditor\\DotenvEditorServiceProvider"
+                    ],
+                    "aliases": {
+                        "DotenvEditor": "Brotzka\\DotenvEditor\\DotenvEditorFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Brotzka\\DotenvEditor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabian Hagen",
+                    "email": "fabianhagen87@gmail.com"
+                }
+            ],
+            "description": "A package for editing the .env file in your Laravel root.",
+            "keywords": [
+                "dotenv",
+                "dotenv-editor",
+                "laravel"
+            ],
+            "time": "2018-07-02T05:42:54+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
